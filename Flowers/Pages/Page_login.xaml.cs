@@ -13,18 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Flowers
+namespace Flowers.Pages
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for Page_login.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Page_login : Page
     {
-        public MainWindow()
+        public Page_login()
         {
             InitializeComponent();
-            Classes.Manager.DBContext = new flowersEntities();
-            mainFrame.NavigationService.Navigate(new Pages.Page_login());
         }
     }
 }

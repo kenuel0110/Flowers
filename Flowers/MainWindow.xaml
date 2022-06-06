@@ -5,8 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Flowers"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Icon="/Resources/icon.ico"
+        Title="Цветочный магазин" MinHeight="450" MinWidth="800">
     <Grid>
-        
+        <Frame Name="mainFrame" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Window>
