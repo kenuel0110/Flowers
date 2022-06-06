@@ -84,6 +84,9 @@
     <Compile Include="Pages\Page_login.xaml.cs">
       <DependentUpon>Page_login.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Page_main.xaml.cs">
+      <DependentUpon>Page_main.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PickupPoints.cs">
       <DependentUpon>ModelBD.tt</DependentUpon>
     </Compile>
@@ -112,6 +115,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Pages\Page_login.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Page_main.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
