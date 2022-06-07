@@ -39,11 +39,12 @@ namespace Flowers.Pages
             string password = tb_password.Password;
             bool auth = false;
             string fullname = "";
+            int idrole = 3;
             string role = "";
 
             if (login == "" || password == "")
             {
-                MessageBox.Show("ЗАполните поля");
+                MessageBox.Show("Заполните поля");
             }
             else
             {
@@ -53,7 +54,14 @@ namespace Flowers.Pages
                     {
                         auth = true;
                         fullname = $"{item.UserSurname} {item.UserName} {item.UserPatronymic}";
-                        role = item.UserRole.ToString();
+                        idrole = item.UserRole;
+
+                        
+                        foreach (var item_role in this.roles) 
+                        {
+                            if (item_role.RoleID == idrole)
+                                role = item_role.RoleName;
+                        }
                         break;
                     }
                 }

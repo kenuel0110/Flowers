@@ -17,19 +17,20 @@
         <Border Background="#92d050">
             <Image Grid.Row="0" Source="/Resources/logo.png" Margin="5"/>
         </Border>
-        <Border Grid.Row="1" CornerRadius="25" Margin="45" Background="White">
+        <Border Grid.Row="1" CornerRadius="25" Margin="60 0 60 0" VerticalAlignment="Center" Background="White">
             <Border.Effect>
                 <DropShadowEffect Color="Black" ShadowDepth="0" Opacity="5" BlurRadius="30"/>
             </Border.Effect>
             <StackPanel Margin="15">
-                <TextBlock Margin="5" Text="Логин"/>
+                <TextBlock Style="{StaticResource main_text}" Margin="5" Text="Логин"/>
                 <TextBox Name="tb_login" Margin="5"/>
-                <TextBlock Margin="5" Text="Пароль"/>
+                <TextBlock Style="{StaticResource main_text}" Margin="5" Text="Пароль"/>
                 <PasswordBox Name="tb_password" Margin="5"/>
                 <StackPanel Margin="0 60 0 0">
-                    <TextBlock Name="btn_login_guest" HorizontalAlignment="Center" Text="Войти как гость" MouseLeftButtonDown="btn_login_guest_MouseLeftButtonDown"/>
-                    <Button Name="btn_login" Content="Войти" Height="32" Margin="15" Click="btn_login_Click"/>
+                    <TextBlock Style="{StaticResource main_text}" Name="btn_login_guest" HorizontalAlignment="Center" Text="Войти как гость" MouseLeftButtonDown="btn_login_guest_MouseLeftButtonDown"/>
+                    <Button Style="{StaticResource main_button}" Name="btn_login" Content="Войти" Height="32" Margin="15" Click="btn_login_Click"/>
                 </StackPanel>
+               
             </StackPanel>
         </Border>
     </Grid>
