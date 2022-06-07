@@ -6,9 +6,72 @@
       xmlns:local="clr-namespace:Flowers.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
+      Background="White"
       Title="Page_main">
 
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="90"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Background="#92d050">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition Height="32"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="60"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="220"/>
+                <ColumnDefinition Width="90"/>
+                <ColumnDefinition Width="60"/>
+            </Grid.ColumnDefinitions>
+            <Image Grid.Column="0" Grid.Row="0" Source="/Resources/logo.png" Margin="5"/>
+            <TextBlock Name="lbl_fullname" Text="Глеб" Style="{StaticResource add_text}" Grid.Row="1" Margin="5" Grid.ColumnSpan="2"/>
+            <StackPanel  Grid.Column="1" Grid.Row="0" Margin="5">
+                <TextBlock Style="{StaticResource add_text}" Text="Поиск"/>
+                <TextBox Name="tb_search" TextChanged="tb_search_TextChanged"/>
+            </StackPanel>
+            <StackPanel  Grid.Column="2" Margin="5" Grid.Row="0">
+                <TextBlock Style="{StaticResource add_text}" Text="Фильтр"/>
+                <ComboBox Name="cb_manufacture" SelectionChanged="cb_manufacture_SelectionChanged"/>
+            </StackPanel>
+            <TextBlock Visibility="Hidden" Name="lbl_filter" Style="{StaticResource add_text}" Text="30 из 50" Grid.Column="3" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <Button Visibility="Hidden" Name="btn_add_page" Content="+" Grid.Column="4" Grid.Row="0" Margin="5" Style="{StaticResource add_buuton}" Click="btn_add_page_Click"/>
+        </Grid>
+        <ListView Name="lv_products"  Grid.Row="1" PreviewMouseLeftButtonUp="lv_products_PreviewMouseLeftButtonUp">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Border Background="white" CornerRadius="15" MinWidth="790" Margin="2">
+                        <Border.Effect>
+                            <DropShadowEffect BlurRadius="30" Color="Gray" ShadowDepth="0"/>
+                        </Border.Effect>
+                        <Grid Margin="5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="90"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="90"/>
+                            </Grid.ColumnDefinitions>
+                            <Image Margin="5" Grid.Column="0">
+                                <Image.Source>
+                                    <Binding Path="ProductPhoto">
+                                        <Binding.TargetNullValue>
+                                            <ImageSource>/Resources/picture.png</ImageSource>
+                                        </Binding.TargetNullValue>
+                                    </Binding>
+                                </Image.Source>
+                            </Image>
+                            <StackPanel Margin="5" Grid.Column="1">
+                                <TextBlock Style="{StaticResource main_text}" Text="{Binding ProdictName}" FontWeight="SemiBold"/>
+                                <TextBlock Style="{StaticResource main_text}" Text="{Binding ProductDescription}"/>
+                                <TextBlock Style="{StaticResource main_text}" Text="{Binding ProductManufacturer}"/>
+                                <TextBlock Style="{StaticResource main_text}" Text="{Binding ProductCost}"/>
+                            </StackPanel>
+                            <TextBlock Grid.Column="2" Style="{StaticResource main_text}" Text="{Binding ProductQuantityInStock}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </Grid>
 </Page>

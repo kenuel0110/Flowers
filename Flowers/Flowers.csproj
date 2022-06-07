@@ -45,6 +45,7 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -66,6 +67,7 @@
     <Compile Include="Categorys.cs">
       <DependentUpon>ModelBD.tt</DependentUpon>
     </Compile>
+    <Compile Include="Classes\Class_Products.cs" />
     <Compile Include="Classes\Manager.cs" />
     <Compile Include="Mafactures.cs">
       <DependentUpon>ModelBD.tt</DependentUpon>
@@ -181,6 +183,7 @@
       <DependentUpon>ModelBD.edmx</DependentUpon>
       <LastGenOutput>ModelBD.cs</LastGenOutput>
     </Content>
+    <Resource Include="Resources\picture.png" />
     <Resource Include="Resources\logo.png" />
   </ItemGroup>
   <ItemGroup>
