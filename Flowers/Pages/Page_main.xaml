@@ -64,7 +64,6 @@
                             <StackPanel Margin="5" Grid.Column="1">
                                 <TextBlock Style="{StaticResource main_text}" Text="{Binding ProdictName}" FontWeight="SemiBold"/>
                                 <TextBlock Style="{StaticResource main_text}" Text="{Binding ProductDescription}"/>
-                                <TextBlock Style="{StaticResource main_text}" Text="{Binding ProductManufacturer}"/>
                                 <TextBlock Style="{StaticResource main_text}" Text="{Binding ProductCost}"/>
                             </StackPanel>
                             <TextBlock Grid.Column="2" Style="{StaticResource main_text}" Text="{Binding ProductQuantityInStock}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
