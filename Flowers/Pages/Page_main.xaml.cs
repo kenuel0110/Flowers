@@ -26,7 +26,8 @@ namespace Flowers.Pages
 
         List<Product> products = Classes.Manager.DBContext.Product.ToList();
         List<Mafactures> manufacturs = Classes.Manager.DBContext.Mafactures.ToList();
-        List<Classes.Class_Products> listview_list = new List<Classes.Class_Products>();
+        List<Product> listview_list = new List<Product>();
+        List<Product> filter_list = new List<Product>();
         public Page_main(string fullname, string role)
         {
             InitializeComponent();
@@ -46,31 +47,9 @@ namespace Flowers.Pages
 
         private void init()
         {
-            listview_list.Clear();
-            foreach (var item in products) 
-            {
-                int idmanufactur = item.IDProductManufacturer;
-                string manufactur = "";
-                foreach (var item_manufacturs in manufacturs) 
-                {
-                    if (item_manufacturs.id == idmanufactur)
-                        manufactur = item_manufacturs.Name;
-                }
-                listview_list.Add(
-                    new Classes.Class_Products()
-                    {
-                        ProductArticleNumber = item.ProductArticleNumber,
-                        ProductName = item.ProductName,
-                        ProductDescription = item.ProductDescription,
-                        IDProductCategory = item.IDProductCategory,
-                        ProductPhoto = item.ProductPhoto,
-                        ProductManufacturer = manufactur,
-                        ProductCost = Convert.ToInt32(item.ProductCost),
-                        ProductDiscountAmount = item.ProductDiscountAmount,
-                        ProductQuantityInStock = item.ProductQuantityInStock
-                    }
-                    );
-            }
+            this.listview_list.Clear();
+            this.listview_list = this.products;
+            this.filter_list = this.listview_list;
             lv_products.ItemsSource = listview_list;
         }
 
@@ -81,7 +60,7 @@ namespace Flowers.Pages
                 DialogResult dialog = System.Windows.Forms.MessageBox.Show("После удаления продукт нельзя осстановить","Удаление", MessageBoxButtons.YesNo);
                 if (dialog == DialogResult.Yes)
                 {
-                    string artucule = listview_list[lv_products.SelectedIndex].ProductArticleNumber;
+                    string artucule = this.filter_list[lv_products.SelectedIndex].ProductArticleNumber;
                     int i = 0;
                     foreach (var item in products)
                     {
@@ -101,17 +80,19 @@ namespace Flowers.Pages
 
         private void filter_list(string filter, string _object) 
         {
+            this.filter_list.Clear()
             if (_object == "cb") 
             {
-                var filtered_list = listview_list.FindAll(x => x.ProductManufacturer == filter);
-                lbl_filter.Text = $"{filtered_list.Count} из {listview_list.Count}";
-                lv_products.ItemsSource = filtered_list;
+                this.filter_list = listview_list.FindAll(x => x.ProductManufacturer == filter);
+                lbl_filter.Text = $"{this.filter_list.Count} из {listview_list.Count}";
+                lv_products.ItemsSource = listview_list.FindAll(x => x.ProductManufacturer == filter);
+                
             }
             if (_object == "search")
             {
-                var filtered_list = listview_list.FindAll(x => x.ProductName.ToLower().Contains(filter.ToLower()));
-                lbl_filter.Text = $"{filtered_list.Count} из {listview_list.Count}";
-                lv_products.ItemsSource = filtered_list;
+                this.filter_list = listview_list.FindAll(x => x.ProductName.ToLower().Contains(filter.ToLower()));
+                lbl_filter.Text = $"{this.filter_list.Count} из {listview_list.Count}";
+                lv_products.ItemsSource = listview_list.FindAll(x => x.ProductName.ToLower().Contains(filter.ToLower()));;
             }
         }
 
